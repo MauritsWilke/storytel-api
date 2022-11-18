@@ -21,4 +21,9 @@ describe("User", async () => {
 		const bookshelf = await client.getBookshelf();
 		expectTypeOf(bookshelf[0]).toMatchTypeOf<Book>; // This is such a cool feature
 	})
+
+	it("should get the users account info", async () => {
+		const accountInfo = await client.getAccountInfo();
+		expect(accountInfo.id).toBeDefined();
+	})
 })

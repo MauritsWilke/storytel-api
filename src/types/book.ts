@@ -86,7 +86,7 @@ interface book {
 	id: number,
 	language: {
 		id: number,
-		isoValue: isoValues,
+		isoValue: isoValue,
 		localizedName: string,
 		name: string
 	},
@@ -149,7 +149,7 @@ export interface Book {
 	ebookMark: ebookMark,
 	entityMetadata: null | any, // Unknown
 	id: number,
-	insertDate: CreatedAt,
+	insertDate: DateTimeFormat,
 	matchInFields: null | any, // Unknown
 	owns: number,
 	restriction: number,

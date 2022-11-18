@@ -1,5 +1,6 @@
 import { login } from "./methods/login.js";
 import { getBookshelf } from "./methods/getBookshelf.js";
+import { getAccountInfo } from "./methods/getAccountInfo.js"
 import type { SingleSignToken } from "./types/types.js";
 
 export class Storytel {
@@ -23,5 +24,11 @@ export class Storytel {
 		if (!this.singleSignToken) throw new Error("No single sign token found.");
 		const bookshelf = await getBookshelf(this.singleSignToken);
 		return bookshelf;
+	}
+
+	getAccountInfo = async () => {
+		if (!this.singleSignToken) throw new Error("No single sign token found.");
+		const accountInfo = await getAccountInfo(this.singleSignToken);
+		return accountInfo;
 	}
 }
