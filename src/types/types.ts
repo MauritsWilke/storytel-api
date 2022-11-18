@@ -1,17 +1,5 @@
-// HELPER TYPES
-type Brand<K, T> = K & { __brand: T };
-type isoValues = "nl" | "en" | "ar" | "tr" | "de" | "fr" | "es" | "it" | "sv";
-type CreatedAt = `${number}-${number}-${number}T${number}:${number}:${number}`;
-interface LanguageObject {
-	checkedByDefault: boolean,
-	id: number,
-	isoValue: string,
-	localizedName: string,
-	name: string
-}
-
-// EXPORTS
 export type EncryptedPassword = Brand<string, "EncryptedPassword">;
+export type SingleSignToken = Brand<string, "SingleSignToken">;
 
 export interface User {
 	accountInfo: {

@@ -1,5 +1,5 @@
 import { encryptPassword } from "../utils/utils.js";
-import type { User } from "../types.js";
+import type { User } from "../types/types.js";
 
 const URL = "https://www.storytel.com/api/login.action?m=1&uid={UID}&pwd={PASSWORD}";
 

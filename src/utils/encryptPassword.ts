@@ -1,5 +1,5 @@
 import { createCipheriv } from "crypto";
-import type { EncryptedPassword } from "../types";
+import type { EncryptedPassword } from "../types/types";
 
 // Huge thanks to @javsanpar for decompiling the Storytel app and retrieving these:
 const KEY = "VQZBJ6TD8M9WBUWT";
