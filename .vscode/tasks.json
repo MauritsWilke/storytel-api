@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start compiler",
+			"type": "shell",
+			"command": "tsc",
+			"group": "none",
+            "presentation": {
+                "reveal": "never",
+                "panel": "new",
+            },
+			"icon": {
+				"color": "terminal.ansiCyan",
+				"id":"squirrel"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		}
+	]
+}

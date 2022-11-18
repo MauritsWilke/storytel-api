@@ -1,0 +1,14 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "es2022",
+		"watch": true,
+		"strict": true,
+		"outDir": "dist",
+		"noImplicitReturns": true,
+	},
+	"include": [
+		"./src/**/*.ts"
+	]
+}

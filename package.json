@@ -1,0 +1,19 @@
+{
+	"author": "Maurits Wilke",
+	"name": "storytel-api",
+	"version": "0.0.1",
+	"description": "An unofficial wrapper for the Storytel API",
+	"main": "dist/index.js",
+	"license": "MIT",
+	"keywords": [
+		"storytel",
+		"storytel API"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"files": [
+		"./dist"
+	],
+	"type": "module"
+}
