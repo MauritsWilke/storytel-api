@@ -1,6 +1,7 @@
 import { login } from "./methods/login.js";
 import { getBookshelf } from "./methods/getBookshelf.js";
 import { getAccountInfo } from "./methods/getAccountInfo.js"
+import { revalidateAccount } from "./methods/revalidateAccount.js";
 import type { SingleSignToken } from "./types/types.js";
 
 export class Storytel {
@@ -17,8 +18,17 @@ export class Storytel {
 		return user;
 	}
 
+	revalidateAccount = async (token?: string) => {
+		if (!this.singleSignToken) throw new Error("No single sign token found.");
+		const user = await revalidateAccount(token as SingleSignToken || this.singleSignToken);
+		this.refreshToken = user.accountInfo.refreshToken;
+		this.singleSignToken = user.accountInfo.singleSignToken as SingleSignToken;
+
+		return user;
+	}
+
 	getRefreshToken = () => this.refreshToken;
-	getSingleSignToken = () => this.singleSignToken
+	getSingleSignToken = () => this.singleSignToken;
 
 	getBookshelf = async () => {
 		if (!this.singleSignToken) throw new Error("No single sign token found.");

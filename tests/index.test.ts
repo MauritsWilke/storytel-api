@@ -26,4 +26,9 @@ describe("User", async () => {
 		const accountInfo = await client.getAccountInfo();
 		expect(accountInfo.id).toBeDefined();
 	})
+
+	it("should revalidate the users account", async () => {
+		const user = await client.revalidateAccount();
+		expect(user.accountInfo.loginStatus).not.toEqual(-1);
+	})
 })
