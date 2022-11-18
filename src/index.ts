@@ -1,1 +1,1 @@
-console.log("Initial commit!");
+export { Storytel as default } from "./Storytel.js";

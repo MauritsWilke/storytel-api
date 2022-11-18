@@ -1,0 +1,1 @@
+export { encryptPassword } from "./encryptPassword.js";

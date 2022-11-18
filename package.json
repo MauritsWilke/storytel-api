@@ -15,5 +15,8 @@
 	"files": [
 		"./dist"
 	],
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^18.11.9"
+	}
 }
