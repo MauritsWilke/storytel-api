@@ -28,7 +28,8 @@ describe("User", async () => {
 	})
 
 	it("should revalidate the users account", async () => {
-		const user = await client.revalidateAccount();
-		expect(user.accountInfo.loginStatus).not.toEqual(-1);
+		const client2 = new Storytel();
+		const revalidatedUser = await client2.revalidateAccount(client.getSingleSignToken());
+		expect(revalidatedUser.accountInfo.loginStatus).not.toEqual(-1);
 	})
 })

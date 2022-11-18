@@ -18,9 +18,10 @@ export class Storytel {
 		return user;
 	}
 
-	revalidateAccount = async (token?: string) => {
-		if (!this.singleSignToken) throw new Error("No single sign token found.");
-		const user = await revalidateAccount(token as SingleSignToken || this.singleSignToken);
+	revalidateAccount = async (token?: string | null) => {
+		token ??= this.singleSignToken;
+		if (!token) throw new Error("No single sign token found.");
+		const user = await revalidateAccount(token as SingleSignToken);
 		this.refreshToken = user.accountInfo.refreshToken;
 		this.singleSignToken = user.accountInfo.singleSignToken as SingleSignToken;
 
