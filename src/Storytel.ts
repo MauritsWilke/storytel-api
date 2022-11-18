@@ -13,4 +13,7 @@ export class Storytel {
 
 		return user;
 	}
+
+	getRefreshToken = () => this.refreshToken;
+	getSingleSignToken = () => this.singleSignToken
 }
