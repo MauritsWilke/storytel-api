@@ -1,5 +1,6 @@
 export type EncryptedPassword = Brand<string, "EncryptedPassword">;
 export type SingleSignToken = Brand<string, "SingleSignToken">;
+export type JWT = Brand<string, "JWT">;
 
 export interface LoginResponse {
 	accountInfo: {

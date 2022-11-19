@@ -157,3 +157,61 @@ export interface Book {
 	status: number,
 	subscribesToSerie: number
 }
+
+interface Format {
+	id: string,
+	type: string,
+	releaseDate: FormatReleaseDate,
+	isGeoRestricted: boolean,
+	isReleased: boolean,
+	publisher: Publisher,
+	isLockedContent: boolean
+}
+
+export interface BookDetails {
+	consumableId: string,
+	bookId: number,
+	title: string,
+	originalTitle: string,
+	language: string,
+	description: string,
+	shareUrl: URL,
+	isAbridged: boolean,
+	audiobookSampleUrl: null | URL,
+	trailerData: null | any, // Unknown
+	ratings: {
+		averageRating: number,
+		numberOfRatings: number
+	},
+	cover: {
+		url: URL,
+		width: number,
+		height: number
+	},
+	category: {
+		name: string,
+		deepLink: string
+	},
+	authors: Author[],
+	narrators: Narrator[],
+	translators: any[],
+	seriesInfo: {
+		id: string,
+		name: string,
+		orderInSeries: number,
+		deepLink: string
+	},
+	duration: null | any, // Unknown
+	formats: Format[],
+	similarBooksContentBlock: {
+		displayType: string,
+		title: string,
+		id: string,
+		subtitle: null | any, // Unknown, likely string
+		itemsUrl: URL,
+		deepLink: string
+	},
+	similarItemsPageDeepLink: string,
+	kidsBook: boolean,
+	type: string
+}

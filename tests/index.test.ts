@@ -14,6 +14,7 @@ describe("User", async () => {
 	it("context.user should be logged in and refreshToken and singleSignToken should be set", () => {
 		expect(user.LoginResponse.accountInfo.loginStatus).not.toEqual(-1);
 		expect(user.getSingleSignToken()).not.toBeNull();
+		expect(user.getJWT).not.toBeNull();
 	})
 
 	it("should get the users bookshelf", async () => {
@@ -29,5 +30,15 @@ describe("User", async () => {
 	it("should log in using user1's token", async () => {
 		const user2 = await client.signInUsingSingleSignToken(user.getSingleSignToken());
 		expect(user2.LoginResponse.accountInfo.loginStatus).not.toEqual(-1);
+	})
+
+	describe("Book", async () => {
+		const bookshelf = await user.getBookshelf();
+		const book = bookshelf[0];
+
+		it("should return the book details", async () => {
+			const details = await book.getBookDetails();
+			expect(details).toBeDefined();
+		})
 	})
 })
