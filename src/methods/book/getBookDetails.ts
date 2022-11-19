@@ -6,8 +6,6 @@ const URL = "https://api.storytel.net/book-details/consumables/{ID}";
 export async function getBookDetails(id: string, jwt: JWT) {
 	const formattedURL = URL.replace("{ID}", id.toString());
 
-	console.log(formattedURL)
-
 	const response = await fetch(formattedURL, {
 		headers: {
 			'authorization': `bearer ${jwt}`,
