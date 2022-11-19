@@ -14,7 +14,7 @@ export async function getBookshelf(token: SingleSignToken, jwt: JWT): Promise<Bo
 		throw new Error(json.message);
 	}
 
-	const books = json.books.map((v: BookType) => new Book(v, jwt))
+	const books = json.books.map((v: BookType) => new Book(v, jwt, token))
 
 	return books;
 }
