@@ -1,6 +1,6 @@
 import { getAverageRating } from "./methods/book/getAverageRating";
 import { getBookDetails } from "./methods/book/getBookDetails";
-// import { getEBook } from "./methods/book/getEBook";
+import { getEBook } from "./methods/book/getEBook";
 
 import type { Book as BookType, Author } from "./types/book";
 import { JWT, SingleSignToken } from "./types/types";
@@ -47,10 +47,10 @@ export class Book {
 	// skip
 	// update bookmark
 
-	// getEBook = async () => {
-	// 	const ebook = await getEBook(this.token, this.id);
-	// 	return ebook;
-	// }
+	getEBook = async () => {
+		const ebook = await getEBook(this.token, this.consumableID);
+		return ebook;
+	}
 
 	// setEBookmark() {
 
