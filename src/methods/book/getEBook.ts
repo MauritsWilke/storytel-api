@@ -9,11 +9,11 @@ export async function getEBook(token: SingleSignToken, id: string) {
 		.replace("{ID}", id.toString());
 
 	const response = await fetch(formattedURL);
-	if (response.status !== 200) throw new Error(response.statusText);
+	if (!response.ok) throw new Error(response.statusText);
 	const location = response.url;
 
 	const ebookResponse = await fetch(location);
-	if (ebookResponse.status !== 200) throw new Error(ebookResponse.statusText);
+	if (!ebookResponse.ok) throw new Error(ebookResponse.statusText);
 	const ebookBuffer = ebookResponse.arrayBuffer();
 
 	return ebookBuffer;

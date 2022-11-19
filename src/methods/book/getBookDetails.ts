@@ -12,9 +12,7 @@ export async function getBookDetails(id: string, jwt: JWT) {
 		}
 	});
 
-	if (response.status !== 200) {
-		throw new Error(response.statusText);
-	}
+	if (!response.ok) throw new Error(response.statusText);
 
 	const details = await response.json() as BookDetails;
 

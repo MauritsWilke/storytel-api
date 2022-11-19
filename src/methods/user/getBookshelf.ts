@@ -10,9 +10,8 @@ export async function getBookshelf(token: SingleSignToken, jwt: JWT, kidsMode: b
 	const response = await fetch(formattedURL);
 	const json = await response.json();
 
-	if (response.status !== 200 || !json?.books) {
-		throw new Error(json.message);
-	}
+	if (!response.ok || !json?.books) throw new Error(json.message);
+
 
 	const books = json.books.map((v: BookType) => new Book(v, jwt, token, kidsMode))
 

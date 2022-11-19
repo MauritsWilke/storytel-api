@@ -9,9 +9,7 @@ export async function getAccountInfo(token: SingleSignToken): Promise<Account> {
 	const response = await fetch(formattedURL);
 	const json = await response.json();
 
-	if (response.status !== 200 || !json?.personInfo) {
-		throw new Error(json.message);
-	}
+	if (!response.ok || !json?.personInfo) throw new Error(json.message);
 
 	const accountInfo = json.personInfo as Account;
 

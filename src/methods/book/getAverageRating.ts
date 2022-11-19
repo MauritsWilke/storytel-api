@@ -7,7 +7,7 @@ export async function getAverageRating(id: string) {
 
 	const response = await fetch(formattedURL);
 
-	if (response.status !== 200) {
+	if (!response.ok) {
 		throw new Error(response.statusText);
 	}
 

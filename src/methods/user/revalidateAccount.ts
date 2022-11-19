@@ -12,9 +12,7 @@ export async function revalidateAccount(token: SingleSignToken) {
 
 	const json = await response.json() as LoginResponse;
 
-	if (response.status !== 200) {
-		throw new Error(json.message);
-	}
+	if (!response.ok) throw new Error(json.message);
 
 	return json;
 }
