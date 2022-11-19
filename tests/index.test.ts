@@ -38,6 +38,15 @@ describe.concurrent("User", async () => {
 		const bookshelf = await user.getBookshelf();
 		const book = bookshelf[0];
 
+		it("should have JWT, SST and kidsMode from user", () => {
+			// @ts-ignore
+			expect(book.JWT).toBeDefined();
+			// @ts-ignore
+			expect(book.kidsMode).toBeDefined();
+			// @ts-ignore
+			expect(book.token).toBeDefined();
+		})
+
 		it("should return the book details", async () => {
 			const details = await book.getBookDetails();
 			expect(details).toBeDefined();

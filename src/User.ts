@@ -7,12 +7,14 @@ import type { SingleSignToken, LoginResponse, JWT } from "./types/types";
 export class User {
 	private singleSignToken: SingleSignToken;
 	private JWT: JWT;
+	private kidsMode: boolean;
 	LoginResponse: LoginResponse;
 
 	constructor(user: LoginResponse) {
 		this.LoginResponse = user;
 		this.singleSignToken = user.accountInfo.singleSignToken as SingleSignToken;
 		this.JWT = user.accountInfo.jwt as JWT;
+		this.kidsMode = false;
 	}
 
 	revalidateAccount = async (token?: string | null) => {
@@ -29,7 +31,7 @@ export class User {
 
 	getBookshelf = async () => {
 		if (!this.singleSignToken) throw new Error("No single sign token found.");
-		const bookshelf = await getBookshelf(this.singleSignToken, this.JWT);
+		const bookshelf = await getBookshelf(this.singleSignToken, this.JWT, this.kidsMode);
 		return bookshelf;
 	}
 

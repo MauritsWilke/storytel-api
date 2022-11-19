@@ -4,7 +4,7 @@ import type { JWT, SingleSignToken } from "../../types/types";
 
 const URL = "https://www.storytel.com/api/getBookShelf.action?token={TOKEN}";
 
-export async function getBookshelf(token: SingleSignToken, jwt: JWT): Promise<Book[]> {
+export async function getBookshelf(token: SingleSignToken, jwt: JWT, kidsMode: boolean): Promise<Book[]> {
 	const formattedURL = URL.replace("{TOKEN}", token);
 
 	const response = await fetch(formattedURL);
@@ -14,7 +14,7 @@ export async function getBookshelf(token: SingleSignToken, jwt: JWT): Promise<Bo
 		throw new Error(json.message);
 	}
 
-	const books = json.books.map((v: BookType) => new Book(v, jwt, token))
+	const books = json.books.map((v: BookType) => new Book(v, jwt, token, kidsMode))
 
 	return books;
 }
