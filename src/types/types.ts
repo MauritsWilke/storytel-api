@@ -1,7 +1,7 @@
 export type EncryptedPassword = Brand<string, "EncryptedPassword">;
 export type SingleSignToken = Brand<string, "SingleSignToken">;
 
-export interface User {
+export interface LoginResponse {
 	accountInfo: {
 		allLanguageObjects: LanguageObject[],
 		allLanguages: {},

@@ -9,27 +9,25 @@ describe("User", async () => {
 	if (!process.env.EMAIL || !process.env.PASSWORD) throw new Error("Make sure you have a .env in root with your EMAIL and PASSWORD");
 
 	const client = new Storytel();
-	const user = await client.login(process.env.EMAIL, process.env.PASSWORD);
+	const user = await client.signIn(process.env.EMAIL, process.env.PASSWORD);
 
 	it("context.user should be logged in and refreshToken and singleSignToken should be set", () => {
-		expect(user.accountInfo.loginStatus).not.toEqual(-1);
-		expect(client.getRefreshToken()).toBeDefined();
-		expect(client.getSingleSignToken()).not.toBeNull();
+		expect(user.LoginResponse.accountInfo.loginStatus).not.toEqual(-1);
+		expect(user.getSingleSignToken()).not.toBeNull();
 	})
 
 	it("should get the users bookshelf", async () => {
-		const bookshelf = await client.getBookshelf();
+		const bookshelf = await user.getBookshelf();
 		expectTypeOf(bookshelf[0]).toMatchTypeOf<Book>; // This is such a cool feature
 	})
 
 	it("should get the users account info", async () => {
-		const accountInfo = await client.getAccountInfo();
+		const accountInfo = await user.getAccountInfo();
 		expect(accountInfo.id).toBeDefined();
 	})
 
-	it("should revalidate the users account", async () => {
-		const client2 = new Storytel();
-		const revalidatedUser = await client2.revalidateAccount(client.getSingleSignToken());
-		expect(revalidatedUser.accountInfo.loginStatus).not.toEqual(-1);
+	it("should log in using user1's token", async () => {
+		const user2 = await client.signInUsingSingleSignToken(user.getSingleSignToken());
+		expect(user2.LoginResponse.accountInfo.loginStatus).not.toEqual(-1);
 	})
 })

@@ -1,4 +1,4 @@
-import type { SingleSignToken, User } from "../types/types";
+import type { SingleSignToken, LoginResponse } from "../types/types";
 
 const URL = "https://www.storytel.com/api/v2/account/revalidation";
 
@@ -10,7 +10,7 @@ export async function revalidateAccount(token: SingleSignToken) {
 		})
 	});
 
-	const json = await response.json() as User;
+	const json = await response.json() as LoginResponse;
 
 	if (response.status !== 200) {
 		throw new Error(json.message);
