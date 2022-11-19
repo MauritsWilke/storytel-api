@@ -4,7 +4,8 @@ type DateTimeFormat = `${number}-${number}-${number}T${number}:${number}:${numbe
 type Duration = `${number}HH ${number}MM`;
 type ReleaseDate = `${number}-${number}-${number}`;
 type InsertDate = `${DateTimeFormat}.${number}+${number}`;
-type FormatReleaseDate = `${DateTimeFormat}Z`
+type FormatReleaseDate = `${DateTimeFormat}Z`;
+type UpdatedTimestamp = `${DateTimeFormat}.${number}Z`;
 
 interface LanguageObject {
 	checkedByDefault: boolean,

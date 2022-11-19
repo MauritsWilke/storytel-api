@@ -40,11 +40,11 @@ describe.concurrent("User", async () => {
 
 		it("should have JWT, SST and kidsMode from user", () => {
 			// @ts-ignore
-			expect(book.JWT).toBeDefined();
+			expect(book.JWT).toEqual(user.getJWT());
 			// @ts-ignore
-			expect(book.kidsMode).toBeDefined();
+			expect(book.kidsMode).toEqual(false);
 			// @ts-ignore
-			expect(book.token).toBeDefined();
+			expect(book.token).toEqual(user.getSingleSignToken());
 		})
 
 		it("should return the book details", async () => {
@@ -65,6 +65,13 @@ describe.concurrent("User", async () => {
 			writeFileSync("./tests/ebook.epub", Buffer.from(ebook));
 
 			expectTypeOf(ebook).toMatchTypeOf<ArrayBuffer>;
+		})
+
+		it("should set a bookmark at position 1000", async () => {
+			const POSITION = 1000;
+			const bookmark = await book.setEBookmark(POSITION);
+
+			expect(bookmark.position).toEqual(POSITION);
 		})
 	})
 })

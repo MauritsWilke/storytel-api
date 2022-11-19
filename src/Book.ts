@@ -1,6 +1,7 @@
 import { getAverageRating } from "./methods/book/getAverageRating";
 import { getBookDetails } from "./methods/book/getBookDetails";
 import { getEBook } from "./methods/book/getEBook";
+import { setEBookmark } from "./methods/book/setEBookmark";
 
 import type { Book as BookType, Author } from "./types/book";
 import { JWT, SingleSignToken } from "./types/types";
@@ -8,6 +9,7 @@ import { JWT, SingleSignToken } from "./types/types";
 export class Book {
 	private JWT: JWT;
 	private token: SingleSignToken;
+	private kidsMode: boolean;
 
 	readonly metadata: BookType;
 
@@ -17,9 +19,10 @@ export class Book {
 	readonly id: number;
 	readonly consumableID: string;
 
-	constructor(book: BookType, jwt: JWT, token: SingleSignToken) {
+	constructor(book: BookType, jwt: JWT, token: SingleSignToken, kidsMode: boolean) {
 		this.JWT = jwt;
 		this.token = token;
+		this.kidsMode = kidsMode;
 
 		this.metadata = book;
 
@@ -52,7 +55,8 @@ export class Book {
 		return ebook;
 	}
 
-	// setEBookmark() {
-
-	// }
+	setEBookmark = async (position: number) => {
+		const bookmark = await setEBookmark(this.JWT, position, this.kidsMode, this.consumableID);
+		return bookmark;
+	}
 }

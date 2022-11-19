@@ -222,3 +222,11 @@ export interface AverageRating {
 	rating: number,
 	bayesianRating: number
 }
+
+export interface ResponseBookmark {
+	consumableId: string,
+	kidsMode: boolean,
+	position: number,
+	type: string,
+	updatedTime: UpdatedTimestamp
+}
