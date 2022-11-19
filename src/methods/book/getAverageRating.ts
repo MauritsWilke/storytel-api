@@ -6,6 +6,11 @@ export async function getAverageRating(id: string) {
 	const formattedURL = URL.replace("{ID}", id.toString());
 
 	const response = await fetch(formattedURL);
+
+	if (response.status !== 200) {
+		throw new Error(response.statusText);
+	}
+
 	const json = await response.json() as AverageRating;
 
 	return json;
