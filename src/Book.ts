@@ -1,3 +1,4 @@
+import { getAverageRating } from "./methods/getAverageRating";
 import { getBookDetails } from "./methods/getBookDetails";
 
 import type { Book as BookType, Author } from "./types/book";
@@ -26,11 +27,12 @@ export class Book {
 
 	getBookDetails = async () => {
 		const details = await getBookDetails(this.id, this.JWT);
-		return details
+		return details;
 	}
 
-	getReviews = () => {
-
+	getAverageRating = async () => {
+		const reviews = await getAverageRating(this.id);
+		return reviews;
 	}
 
 	getSimilarBooks = () => {

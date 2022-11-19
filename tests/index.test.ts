@@ -40,5 +40,10 @@ describe("User", async () => {
 			const details = await book.getBookDetails();
 			expect(details).toBeDefined();
 		})
+
+		it("should return the average book rating", async () => {
+			const averageRating = await book.getAverageRating();
+			expect(averageRating).toBeDefined();
+		})
 	})
 })

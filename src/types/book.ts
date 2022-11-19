@@ -215,3 +215,10 @@ export interface BookDetails {
 	kidsBook: boolean,
 	type: string
 }
+
+export interface AverageRating {
+	count: number,
+	sum: number,
+	rating: number,
+	bayesianRating: number
+}
