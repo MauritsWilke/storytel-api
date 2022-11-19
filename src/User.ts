@@ -1,6 +1,6 @@
-import { getBookshelf } from "./methods/getBookshelf.js";
-import { getAccountInfo } from "./methods/getAccountInfo.js"
-import { revalidateAccount } from "./methods/revalidateAccount.js";
+import { getBookshelf } from "./methods/user/getBookshelf.js";
+import { getAccountInfo } from "./methods/user/getAccountInfo.js"
+import { revalidateAccount } from "./methods/user/revalidateAccount.js";
 
 import type { SingleSignToken, LoginResponse, JWT } from "./types/types";
 

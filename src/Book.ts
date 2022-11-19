@@ -1,5 +1,5 @@
-import { getAverageRating } from "./methods/getAverageRating";
-import { getBookDetails } from "./methods/getBookDetails";
+import { getAverageRating } from "./methods/book/getAverageRating";
+import { getBookDetails } from "./methods/book/getBookDetails";
 
 import type { Book as BookType, Author } from "./types/book";
 import { JWT } from "./types/types";

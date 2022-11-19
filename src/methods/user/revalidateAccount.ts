@@ -1,4 +1,4 @@
-import type { SingleSignToken, LoginResponse } from "../types/types";
+import type { SingleSignToken, LoginResponse } from "../../types/types";
 
 const URL = "https://www.storytel.com/api/v2/account/revalidation";
 

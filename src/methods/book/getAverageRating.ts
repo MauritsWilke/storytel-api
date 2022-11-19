@@ -1,4 +1,4 @@
-import type { AverageRating } from "../types/book";
+import type { AverageRating } from "../../types/book";
 
 const URL = "https://api.storytel.net/review-service/ratings/{ID}/averageRating";
 
