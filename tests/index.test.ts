@@ -1,9 +1,9 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import { expect, it, describe, expectTypeOf } from "vitest";
+import { expect, it, describe } from "vitest";
+import { Book } from "../src/Book";
 import Storytel from "../src/index";
-import type { Book } from "../src/types/book";
 
 describe("User", async () => {
 	if (!process.env.EMAIL || !process.env.PASSWORD) throw new Error("Make sure you have a .env in root with your EMAIL and PASSWORD");
@@ -18,7 +18,7 @@ describe("User", async () => {
 
 	it("should get the users bookshelf", async () => {
 		const bookshelf = await user.getBookshelf();
-		expectTypeOf(bookshelf[0]).toMatchTypeOf<Book>; // This is such a cool feature
+		expect(bookshelf[0]).toBeInstanceOf(Book);
 	})
 
 	it("should get the users account info", async () => {

@@ -1,4 +1,5 @@
-import { Book } from "../types/book";
+import { Book } from "../Book.js";
+import type { Book as BookType } from "../types/book";
 import type { SingleSignToken } from "../types/types";
 
 const URL = "https://www.storytel.com/api/getBookShelf.action?token={TOKEN}";
@@ -13,7 +14,7 @@ export async function getBookshelf(token: SingleSignToken): Promise<Book[]> {
 		throw new Error(JSON.message);
 	}
 
-	const books = JSON.books as Book[]
+	const books = JSON.books.map((v: BookType) => new Book(v))
 
 	return books;
 }

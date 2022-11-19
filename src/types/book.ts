@@ -5,7 +5,7 @@ interface Narrator {
 	name: string
 }
 
-interface Author {
+export interface Author {
 	description: null | any, // Unknown
 	id: number,
 	language: null | any, // Unknown
@@ -145,8 +145,8 @@ export interface Book {
 	abook: abook,
 	abookMark: abookMark,
 	book: book,
-	ebook: ebook,
-	ebookMark: ebookMark,
+	ebook: ebook | null,
+	ebookMark: ebookMark | null,
 	entityMetadata: null | any, // Unknown
 	id: number,
 	insertDate: DateTimeFormat,
