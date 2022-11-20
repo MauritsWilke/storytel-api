@@ -3,6 +3,7 @@ import { getBookDetails } from "./methods/book/getBookDetails";
 import { getEBook } from "./methods/book/ebook/getEBook";
 import { getEBookmark } from "./methods/book/ebook/getEbookmark";
 import { setEBookmark } from "./methods/book/ebook/setEBookmark";
+import { downloadAudiobook } from "./methods/book/abook/downloadAudiobook"
 
 import type { Book as BookType, Author } from "./types/book";
 import { JWT, SingleSignToken } from "./types/types";
@@ -45,6 +46,10 @@ export class Book {
 	}
 
 	// Audiobook functions
+	downloadAudiobook = async () => {
+		const buffer = await downloadAudiobook(this.token, this.metadata.abook.id);
+		return buffer;
+	}
 
 	// play
 	// pause

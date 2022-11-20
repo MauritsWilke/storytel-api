@@ -8,6 +8,10 @@ import { Book } from "../src/Book";
 import type { ebookMark } from "../src/types/book";
 import Storytel from "../src/index";
 
+// ⚙ Test settings
+const excludeDownloads = true; // Excludes downloading the ebook and abook tests
+//
+
 describe.concurrent("User", async () => {
 	if (!process.env.EMAIL || !process.env.PASSWORD) throw new Error("Make sure you have a .env in root with your EMAIL and PASSWORD");
 
@@ -59,7 +63,7 @@ describe.concurrent("User", async () => {
 		})
 
 		describe("ebook", () => {
-			it("should return the epub file", async () => {
+			it.skipIf(excludeDownloads)("should return an arraybuffer that can be converted to the books epub file", async () => {
 				const ebook = await book.getEBook();
 
 				// You have to manually test if this is a valid ebook
@@ -80,6 +84,14 @@ describe.concurrent("User", async () => {
 				const getBookmark = await book.getEBookmark();
 
 				expect(setBookmark.position).toEqual(getBookmark.position);
+			})
+		})
+
+		describe("audiobook", async () => {
+			it.skipIf(excludeDownloads)("should return an arraybuffer of the audiobook as mp3", async () => {
+				const downloadBuffer = await book.downloadAudiobook();
+
+				writeFileSync("./tests/abook.mp3", Buffer.from(downloadBuffer));
 			})
 		})
 	})

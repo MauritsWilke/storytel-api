@@ -2,3 +2,4 @@ node_modules
 dist/**/*
 .env
 tests/*.epub
+tests/*.mp3
