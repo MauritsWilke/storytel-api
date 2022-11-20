@@ -1,8 +1,8 @@
 import { getAverageRating } from "./methods/book/getAverageRating";
 import { getBookDetails } from "./methods/book/getBookDetails";
-import { getEBook } from "./methods/book/getEBook";
-import { getEBookmark } from "./methods/book/getEbookmark";
-import { setEBookmark } from "./methods/book/setEBookmark";
+import { getEBook } from "./methods/book/ebook/getEBook";
+import { getEBookmark } from "./methods/book/ebook/getEbookmark";
+import { setEBookmark } from "./methods/book/ebook/setEBookmark";
 
 import type { Book as BookType, Author } from "./types/book";
 import { JWT, SingleSignToken } from "./types/types";

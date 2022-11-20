@@ -1,4 +1,4 @@
-import { SingleSignToken } from "../../types/types";
+import { SingleSignToken } from "../../../types/types";
 
 
 const URL = "https://www.storytel.com/api/ebookStream.action?token={TOKEN}&consumableId={ID}";

@@ -1,5 +1,5 @@
-import type { ResponseBookmark } from "../../types/book";
-import type { JWT } from "../../types/types";
+import type { ResponseBookmark } from "../../../types/book";
+import type { JWT } from "../../../types/types";
 
 const URL = "https://api.storytel.net/bookmarks/positional?version=22.43.0";
 
