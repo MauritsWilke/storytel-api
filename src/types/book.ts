@@ -131,7 +131,7 @@ interface ebook {
 	releaseDateFormat: ReleaseDate
 }
 
-interface ebookMark {
+export interface ebookMark {
 	bookId: number,
 	chapter: number,
 	charOffsetInChapter: number,
@@ -227,6 +227,6 @@ export interface ResponseBookmark {
 	consumableId: string,
 	kidsMode: boolean,
 	position: number,
-	type: string,
+	type: "abook" | "ebook",
 	updatedTime: UpdatedTimestamp
 }

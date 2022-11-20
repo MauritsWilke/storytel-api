@@ -1,6 +1,7 @@
 import { getAverageRating } from "./methods/book/getAverageRating";
 import { getBookDetails } from "./methods/book/getBookDetails";
 import { getEBook } from "./methods/book/getEBook";
+import { getEBookmark } from "./methods/book/getEbookmark";
 import { setEBookmark } from "./methods/book/setEBookmark";
 
 import type { Book as BookType, Author } from "./types/book";
@@ -53,6 +54,11 @@ export class Book {
 	getEBook = async () => {
 		const ebook = await getEBook(this.token, this.consumableID);
 		return ebook;
+	}
+
+	getEBookmark = async () => {
+		const bookmark = await getEBookmark(this.JWT, this.consumableID);
+		return bookmark;
 	}
 
 	setEBookmark = async (position: number) => {

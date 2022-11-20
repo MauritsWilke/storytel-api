@@ -5,6 +5,7 @@ import { writeFileSync } from "fs";
 
 import { expect, it, describe, expectTypeOf } from "vitest";
 import { Book } from "../src/Book";
+import type { ebookMark } from "../src/types/book";
 import Storytel from "../src/index";
 
 describe.concurrent("User", async () => {
@@ -57,21 +58,29 @@ describe.concurrent("User", async () => {
 			expect(averageRating).toBeDefined();
 		})
 
-		it("should return the epub file", async () => {
-			const ebook = await book.getEBook();
+		describe("ebook", () => {
+			it("should return the epub file", async () => {
+				const ebook = await book.getEBook();
 
-			// You have to manually test if this is a valid ebook
-			// But assuming you haven't touched the getEBook() file
-			writeFileSync("./tests/ebook.epub", Buffer.from(ebook));
+				// You have to manually test if this is a valid ebook
+				// But assuming you haven't touched the getEBook() file
+				writeFileSync("./tests/ebook.epub", Buffer.from(ebook));
 
-			expectTypeOf(ebook).toMatchTypeOf<ArrayBuffer>;
-		})
+				expectTypeOf(ebook).toMatchTypeOf<ArrayBuffer>;
+			})
 
-		it("should set a bookmark at position 1000", async () => {
-			const POSITION = 1000;
-			const bookmark = await book.setEBookmark(POSITION);
+			it("should get the ebookmark", () => {
+				const bookmark = book.getEBookmark();
+				expectTypeOf(bookmark).toMatchTypeOf<ebookMark>;
+			})
 
-			expect(bookmark.position).toEqual(POSITION);
+			it("should set a bookmark at position 1000 and getBookmark should have that value", async () => {
+				const POSITION = 1000;
+				const setBookmark = await book.setEBookmark(POSITION);
+				const getBookmark = await book.getEBookmark();
+
+				expect(setBookmark.position).toEqual(getBookmark.position);
+			})
 		})
 	})
 })
