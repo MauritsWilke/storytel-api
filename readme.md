@@ -26,6 +26,14 @@ I am working on a small guide but it's not my main priority.
 
 ## ✔ To-do and planned features
 - [ ] Write proper documentation
+- [ ] Audiobook features
+	- [ ] Play
+	- [ ] Pause
+	- [ ] Skip
+	- [ ] Set and get bookmark
+
+Features with less priority:
+- [ ] Editing device type (through client class)
 - [ ] Editing user info
 	- [ ] Changing password
 	- [ ] Changing username
