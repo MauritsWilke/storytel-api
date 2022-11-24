@@ -30,7 +30,7 @@ export class Book {
 
 		this.title = book.book.name;
 		this.authors = book.book.authors;
-		this.description = book.ebook?.description || book.abook.description || "";
+		this.description = book.ebook?.description || book.abook?.description || "";
 		this.id = book.book.id;
 		this.consumableID = book.book.consumableId;
 	}
@@ -46,15 +46,17 @@ export class Book {
 	}
 
 	// Audiobook functions
+	hasAudiobook = () => this.metadata.abook ? true : false; // yea !! exist ik ik
+
 	downloadAudiobook = async () => {
-		const buffer = await downloadAudiobook(this.token, this.metadata.abook.id);
+		if (!this.hasAudiobook()) throw new Error("This book has no AudioBook");
+		const buffer = await downloadAudiobook(this.token, this.metadata.abook!.id); // "!" because of the check above;
 		return buffer;
 	}
 
-	// play
-	// pause
-	// skip
-	// update bookmark
+
+	// Ebook functions
+	hasEbook = () => this.metadata.ebook ? true : false; // Yes I know I can do !!
 
 	getEBook = async () => {
 		const ebook = await getEBook(this.token, this.consumableID);

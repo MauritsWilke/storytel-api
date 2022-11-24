@@ -142,7 +142,7 @@ export interface ebookMark {
 }
 
 export interface Book {
-	abook: abook,
+	abook: abook | null,
 	abookMark: abookMark,
 	book: book,
 	ebook: ebook | null,

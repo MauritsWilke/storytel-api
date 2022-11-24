@@ -44,6 +44,14 @@ describe.concurrent("User", async () => {
 		const bookshelf = await user.getBookshelf();
 		const book = bookshelf[0];
 
+		it("should check if audiobook or ebook exists", () => {
+			const abook = book.hasAudiobook();
+			const ebook = book.hasEbook();
+
+			expect(abook).toBeTypeOf("boolean");
+			expect(ebook).toBeTypeOf("boolean");
+		})
+
 		it("should have JWT, SST and kidsMode from user", () => {
 			// These are ts-ignored because you technically still have access to them
 			// But they're marked as private fields in TS
