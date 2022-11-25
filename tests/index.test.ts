@@ -91,11 +91,15 @@ describe.concurrent("User", async () => {
 			})
 
 			it("should set a bookmark at position 1000 and getBookmark should have that value", async () => {
+				const { position: oldPosition } = await book.getEBookmark(); // Storing old position to not mess your account
+
 				const POSITION = 1000;
 				const setBookmark = await book.setEBookmark(POSITION);
 				const getBookmark = await book.getEBookmark();
 
 				expect(setBookmark.position).toEqual(getBookmark.position);
+
+				await book.setEBookmark(oldPosition); // Setting the position back to its old position
 			})
 		})
 
