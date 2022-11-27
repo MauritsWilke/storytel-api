@@ -11,6 +11,7 @@ import { JWT, SingleSignToken } from "../src/types/types";
 
 // ⚙ Test settings
 const excludeDownloads = true; // Excludes the tests that retrieve the arraybuffers (this reduces test time significantly)
+const excludeDownloadRequests = true; // This still runs the tests (which massively increases test time) but doesn't download them
 //
 
 describe.concurrent("User", async () => {
@@ -44,14 +45,6 @@ describe.concurrent("User", async () => {
 		const bookshelf = await user.getBookshelf();
 		const book = bookshelf[0];
 
-		it("should check if audiobook or ebook exists", () => {
-			const abook = book.hasAudiobook();
-			const ebook = book.hasEbook();
-
-			expect(abook).toBeTypeOf("boolean");
-			expect(ebook).toBeTypeOf("boolean");
-		})
-
 		it("should have JWT, SST and kidsMode from user", () => {
 			// These are ts-ignored because you technically still have access to them
 			// But they're marked as private fields in TS
@@ -75,41 +68,47 @@ describe.concurrent("User", async () => {
 		})
 
 		describe("ebook", () => {
-			it.skipIf(excludeDownloads)("should return an arraybuffer that can be converted to the books epub file", async () => {
-				const ebook = await book.getEBook();
+			const ebook = book.ebook;
+			if (ebook === null) throw new Error("Failed to run tests: make sure your most recent book has both an audio- and ebook option.")
+
+			it.skipIf(excludeDownloadRequests)("should return an arraybuffer that can be converted to the books epub file", async () => {
+				const downloadBuffer = await ebook.download();
 
 				// You have to manually test if this is a valid ebook
 				// But assuming you haven't touched the getEBook() file you should be fine
-				writeFileSync("./tests/ebook.epub", Buffer.from(ebook));
+				if (!excludeDownloads) writeFileSync("./tests/ebook.epub", Buffer.from(downloadBuffer));
 
 				expectTypeOf(ebook).toMatchTypeOf<ArrayBuffer>;
 			})
 
 			it("should get the ebookmark", () => {
-				const bookmark = book.getEBookmark();
+				const bookmark = ebook.getBookmark();
 				expectTypeOf(bookmark).toMatchTypeOf<ebookMark>;
 			})
 
 			it("should set a bookmark at position 1000 and getBookmark should have that value", async () => {
-				const { position: oldPosition } = await book.getEBookmark(); // Storing old position to not mess your account
+				const { position: oldPosition } = await ebook.getBookmark(); // Storing old position to not mess your account
 
 				const POSITION = 1000;
-				const setBookmark = await book.setEBookmark(POSITION);
-				const getBookmark = await book.getEBookmark();
+				const setBookmark = await ebook.setBookmark(POSITION);
+				const getBookmark = await ebook.getBookmark();
 
 				expect(setBookmark.position).toEqual(getBookmark.position);
 
-				await book.setEBookmark(oldPosition); // Setting the position back to its old position
+				await ebook.setBookmark(oldPosition); // Setting the position back to its old position
 			})
 		})
 
-		describe("audiobook", async () => {
-			it.skipIf(excludeDownloads)("should return an arraybuffer of the audiobook as mp3", async () => {
-				const downloadBuffer = await book.downloadAudiobook();
+		describe("audiobook", () => {
+			const audiobook = book.audiobook;
+			if (audiobook === null) throw new Error("Failed to run tests: make sure your most recent book has both an audio- and ebook option.")
+
+			it.skipIf(excludeDownloadRequests)("should return an arraybuffer of the audiobook as mp3", async () => {
+				const downloadBuffer = await audiobook.download();
 
 				// You have to manually test if this is a valid mp3 file
 				// But if you haven't touched the downloadAudiobook file you should be fine
-				writeFileSync("./tests/abook.mp3", Buffer.from(downloadBuffer));
+				if (!excludeDownloads) writeFileSync("./tests/abook.mp3", Buffer.from(downloadBuffer));
 
 				expectTypeOf(downloadBuffer).toMatchTypeOf<ArrayBuffer>;
 			})

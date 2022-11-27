@@ -31,7 +31,7 @@ interface Publisher {
 	name: string
 }
 
-interface abook {
+export interface abook {
 	allowedToStream: boolean,
 	bitRate: number, // Figure out all bitrates?
 	consumableFormatId: string,
@@ -112,7 +112,7 @@ interface book {
 	type: number
 }
 
-interface ebook {
+export interface ebook {
 	allowedToStream: boolean,
 	consumableFormatId: string,
 	copyright: null | any, // Unknown
