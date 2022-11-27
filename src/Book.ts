@@ -9,10 +9,6 @@ import type { Book as BookType, Author } from "./types/book";
 import { JWT, SingleSignToken } from "./types/types";
 
 export class Book {
-	private JWT: JWT;
-	private token: SingleSignToken;
-	private kidsMode: boolean;
-
 	readonly metadata: BookType;
 
 	readonly title: string;
@@ -21,11 +17,12 @@ export class Book {
 	readonly id: number;
 	readonly consumableID: string;
 
-	constructor(book: BookType, jwt: JWT, token: SingleSignToken, kidsMode: boolean) {
-		this.JWT = jwt;
-		this.token = token;
-		this.kidsMode = kidsMode;
-
+	constructor(
+		book: BookType,
+		private JWT: JWT,
+		private token: SingleSignToken,
+		private kidsMode: boolean
+	) {
 		this.metadata = book;
 
 		this.title = book.book.name;
