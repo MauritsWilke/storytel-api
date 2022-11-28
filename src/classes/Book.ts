@@ -1,8 +1,8 @@
-import { getAverageRating } from "./methods/book/getAverageRating";
-import { getBookDetails } from "./methods/book/getBookDetails";
+import { getAverageRating } from "../methods/book/getAverageRating";
+import { getBookDetails } from "../methods/book/getBookDetails";
 
-import type { Book as BookType, Author } from "./types/book";
-import { JWT, SingleSignToken } from "./types/types";
+import type { Book as BookType, Author } from "../types/book";
+import { JWT, SingleSignToken } from "../types/types";
 import { Ebook } from "./Ebook";
 import { Audiobook } from "./Audiobook";
 

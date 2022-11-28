@@ -1,8 +1,8 @@
-import { login } from "./methods/user/login.js";
-import { revalidateAccount } from "./methods/user/revalidateAccount.js";
+import { login } from "../methods/user/login.js";
+import { revalidateAccount } from "../methods/user/revalidateAccount.js";
 import { User } from "./User.js";
 
-import type { SingleSignToken } from "./types/types.js";
+import type { SingleSignToken } from "../types/types.js";
 
 export class Storytel {
 	constructor() { };

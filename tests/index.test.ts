@@ -4,7 +4,7 @@ dotenv.config();
 import { writeFileSync } from "fs";
 
 import { expect, it, describe, expectTypeOf } from "vitest";
-import { Book } from "../src/Book";
+import { Book } from "../src/classes/Book";
 import { AverageRating, BookDetails, ebookMark } from "../src/types/book";
 import Storytel from "../src/index";
 import { JWT, SingleSignToken } from "../src/types/types";

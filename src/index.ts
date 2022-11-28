@@ -1,1 +1,1 @@
-export { Storytel as default } from "./Storytel.js";
+export { Storytel as default } from "./classes/Storytel.js";

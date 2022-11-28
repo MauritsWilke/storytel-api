@@ -1,4 +1,4 @@
-import { Book } from "../../Book.js";
+import { Book } from "../../classes/Book.js";
 import type { Book as BookType } from "../../types/book";
 import type { JWT, SingleSignToken } from "../../types/types";
 

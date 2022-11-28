@@ -1,8 +1,8 @@
-import { getBookshelf } from "./methods/user/getBookshelf.js";
-import { getAccountInfo } from "./methods/user/getAccountInfo.js"
-import { revalidateAccount } from "./methods/user/revalidateAccount.js";
+import { getBookshelf } from "../methods/user/getBookshelf.js";
+import { getAccountInfo } from "../methods/user/getAccountInfo.js"
+import { revalidateAccount } from "../methods/user/revalidateAccount.js";
 
-import type { SingleSignToken, LoginResponse, JWT } from "./types/types";
+import type { SingleSignToken, LoginResponse, JWT } from "../types/types";
 
 export class User {
 	private singleSignToken: SingleSignToken;

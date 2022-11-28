@@ -1,7 +1,7 @@
-import { downloadAudiobook } from "./methods/book/abook/downloadAudiobook";
+import { downloadAudiobook } from "../methods/book/abook/downloadAudiobook";
 
-import type { abook } from "./types/book";
-import type { JWT, SingleSignToken } from "./types/types";
+import type { abook } from "../types/book";
+import type { JWT, SingleSignToken } from "../types/types";
 
 export class Audiobook {
 	constructor(
