@@ -3,7 +3,7 @@ import type { JWT } from "../../../types/types";
 
 const URL = "https://api.storytel.net/bookmarks/positional?version=22.43.0";
 
-export async function setEBookmark(jwt: JWT, position: number, kidsMode: boolean, consumableId: string) {
+export async function setBookmark(jwt: JWT, position: number, kidsMode: boolean, consumableId: string) {
 	const response = await fetch(URL, {
 		method: "POST",
 		headers: {

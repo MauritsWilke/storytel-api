@@ -3,7 +3,7 @@ import { JWT } from "../../../types/types";
 
 const URL = "https://api.storytel.net/bookmarks/positional?consumableIds={ID}&version=22.43.0"
 
-export async function getEBookmark(jwt: JWT, consumableID: string) {
+export async function getBookmark(jwt: JWT, consumableID: string) {
 	const formattedURL = URL.replace("{ID}", consumableID);
 
 	const response = await fetch(formattedURL, {
