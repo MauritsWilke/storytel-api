@@ -3,11 +3,11 @@
 	"compilerOptions": {
 		"target": "esnext",
 		"module": "es2022",
-		"watch": true,
 		"strict": true,
 		"outDir": "dist",
 		"noImplicitReturns": true,
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+		"declaration": true
 	},
 	"include": [
 		"./src/**/*.ts"
