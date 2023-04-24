@@ -1,6 +1,6 @@
 # <img src="./static/logo.svg" height="27px"> Storytel API
 An unofficial wrapper for the [Storytel][storytel] API written in TS.\
-This project is still in development and I don't recommend using it untill v1 is released. The project isn't on NPM yet, so if you want to use the current version you'll have to clone it.
+This project is still in development and I don't recommend using it untill v1 is released. The project isn't on NPM yet, so if you want to use the current version you'll have to clone this repository.
 
 ## 💡 How to use
 To use storytel-api, first install it from NPM:
@@ -11,7 +11,7 @@ To use storytel-api, first install it from NPM:
 Import it and create a client, this does require you to have an [account][signup].
 
 ```ts
-const Storytel = import "storytel-api";
+import Storytel from "storytel-api";
 const client = new Storytel();
 
 const user = await client.signIn("email", "password");
