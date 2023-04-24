@@ -1,6 +1,6 @@
-import { download } from "../methods/book/ebook/download";
-import { getBookmark } from "../methods/book/ebook/getBookmark";
-import { setBookmark } from "../methods/book/ebook/setBookmark";
+import { download } from "../methods/book/ebook/download.js";
+import { getBookmark } from "../methods/book/ebook/getBookmark.js";
+import { setBookmark } from "../methods/book/ebook/setBookmark.js";
 import type { JWT, SingleSignToken } from "../types/types";
 
 export class Ebook {

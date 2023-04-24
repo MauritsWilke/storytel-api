@@ -23,7 +23,6 @@ export async function setBookmark(jwt: JWT, position: number, kidsMode: boolean,
 
 	const json = await response.json();
 	const bookmark = json.bookmark as ResponseBookmark;
-	console.log(bookmark)
 
 	return bookmark;
 }

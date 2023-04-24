@@ -1,6 +1,6 @@
-import { downloadAudiobook } from "../methods/book/abook/downloadAudiobook";
-import { getBookmark } from "../methods/book/abook/getBookmark";
-import { setBookmark } from "../methods/book/abook/setBookmark";
+import { downloadAudiobook } from "../methods/book/abook/downloadAudiobook.js";
+import { getBookmark } from "../methods/book/abook/getBookmark.js";
+import { setBookmark } from "../methods/book/abook/setBookmark.js";
 
 import type { abook } from "../types/book";
 import type { JWT, SingleSignToken } from "../types/types";
