@@ -53,7 +53,7 @@ export interface abook {
 	time: number
 }
 
-interface abookMark {
+export interface abookMark {
 	bookId: number,
 	chapter: number,
 	charOffsetInChapter: number,

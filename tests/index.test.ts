@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 
 import { expect, it, describe, expectTypeOf } from "vitest";
 import { Book } from "../src/classes/Book";
-import { AverageRating, BookDetails, ebookMark } from "../src/types/book";
+import { AverageRating, BookDetails, ebookMark, abookMark } from "../src/types/book";
 import Storytel from "../src/index";
 import { JWT, SingleSignToken } from "../src/types/types";
 
@@ -111,6 +111,23 @@ describe.concurrent("User", async () => {
 				if (!excludeDownloads) writeFileSync("./tests/abook.mp3", Buffer.from(downloadBuffer));
 
 				expectTypeOf(downloadBuffer).toMatchTypeOf<ArrayBuffer>;
+			})
+
+			it("should get the abookmark", () => {
+				const bookmark = audiobook.getBookmark();
+				expectTypeOf(bookmark).toMatchTypeOf<abookMark>;
+			})
+
+			it("should set a bookmark at position 1000 and getBookmark should have that value", async () => {
+				const { position: oldPosition } = await audiobook.getBookmark(); // Storing old position to not mess your account
+
+				const POSITION = 1000;
+				const setBookmark = await audiobook.setBookmark(POSITION);
+				const getBookmark = await audiobook.getBookmark();
+
+				expect(setBookmark.position).toEqual(getBookmark.position);
+
+				await audiobook.setBookmark(oldPosition); // Setting the position back to its old position
 			})
 		})
 	})
