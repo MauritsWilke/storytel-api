@@ -10,8 +10,6 @@ export async function download(token: SingleSignToken, id: number) {
 	const response = await fetch(formattedURL);
 	if (!response.ok) throw new Error(response.statusText);
 
-	console.log(formattedURL)
-
 	const blob = await response.arrayBuffer();
 
 	return blob;
