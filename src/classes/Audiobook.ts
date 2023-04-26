@@ -1,4 +1,4 @@
-import { downloadAudiobook } from "../methods/book/abook/downloadAudiobook.js";
+import { download } from "../methods/book/abook/download.js";
 import { getBookmark } from "../methods/book/abook/getBookmark.js";
 import { setBookmark } from "../methods/book/abook/setBookmark.js";
 
@@ -15,7 +15,7 @@ export class Audiobook {
 	) { }
 
 	download = async () => {
-		const buffer = await downloadAudiobook(this.token, this.audiobookData.id);
+		const buffer = await download(this.token, this.audiobookData.id);
 		return buffer;
 	}
 

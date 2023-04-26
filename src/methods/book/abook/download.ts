@@ -2,7 +2,7 @@ import { SingleSignToken } from "../../../types/types";
 
 const URL = "https://www.storytel.com/mp3streamRangeReq?startposition=0&programId={ID}&token={TOKEN}";
 
-export async function downloadAudiobook(token: SingleSignToken, id: number) {
+export async function download(token: SingleSignToken, id: number) {
 	const formattedURL = URL
 		.replace("{ID}", id.toString())
 		.replace("{TOKEN}", token);
