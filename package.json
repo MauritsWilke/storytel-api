@@ -4,13 +4,17 @@
 	"version": "0.0.1",
 	"description": "An unofficial wrapper for the Storytel API",
 	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"license": "MIT",
 	"keywords": [
 		"storytel",
 		"storytel API"
 	],
 	"scripts": {
-		"test": "vitest"
+		"test": "vitest",
+		"dev": "tsc --watch",
+		"build": "tsc",
+		"prepublish": "tsc"
 	},
 	"files": [
 		"./dist"
@@ -20,6 +24,7 @@
 		"@types/node": "^18.11.9",
 		"@vitest/ui": "^0.25.2",
 		"dotenv": "^16.0.3",
+		"typescript": "^5.2.2",
 		"vitest": "^0.25.2",
 		"web-streams-polyfill": "^3.2.1"
 	}
