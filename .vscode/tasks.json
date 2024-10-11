@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "tsc",
+            "type": "shell",
+            "command": "tsc",
+            "group": "none",
+            "presentation": {
+                "reveal": "never",
+                "panel": "new",
+            },
+            "icon": {
+                "color": "terminal.ansiWhite",
+                "id": "run"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "vitest",
+            "type": "shell",
+            "command": "npm run test -- --ui",
+            "group": "none",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never",
+                "panel": "new",
+            },
+            "icon": {
+                "color": "terminal.ansiWhite",
+                "id": "beaker"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
